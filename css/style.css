@@ -1239,7 +1239,7 @@ body {
 /* Novo fundo do topo */
 .hero {
     background-color: var(--roxo-noite);
-    background-image:url("/img/hero/fundo-capriquarianas.png");
+    background-image:url("../img/hero/fundo-capriquarianas.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
