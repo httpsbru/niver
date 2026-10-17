@@ -1,245 +1,308 @@
-/* =========================================
-   ANIVERSÁRIO STEFANY
-   SCRIPT PRINCIPAL
-========================================= */
-
 
 /* =========================================
-   ELEMENTOS DO FORMULÁRIO
+   CAPRIQUARIANAS — CONTAGEM REGRESSIVA
 ========================================= */
 
-const rsvpForm =
-    document.getElementById("rsvpForm");
+const dataEvento = new Date("2027-01-30T12:00:00-03:00").getTime();
 
-const companionGroup =
-    document.getElementById("companionGroup");
+function atualizarContagem() {
+    const dias = document.getElementById("days");
+    const horas = document.getElementById("hours");
+    const minutos = document.getElementById("minutes");
+    const segundos = document.getElementById("seconds");
 
-const companionNameGroup =
-    document.getElementById("companionNameGroup");
+    if (!dias || !horas || !minutos || !segundos) {
+        console.error("Não encontrei todos os elementos do contador.");
+        return;
+    }
 
-const successMessage =
-    document.getElementById("successMessage");
+    const diferenca = dataEvento - Date.now();
+
+    if (diferenca <= 0) {
+        dias.textContent = "00";
+        horas.textContent = "00";
+        minutos.textContent = "00";
+        segundos.textContent = "00";
+        return;
+    }
+
+    const totalSegundos = Math.floor(diferenca / 1000);
+
+    dias.textContent = String(
+        Math.floor(totalSegundos / 86400)
+    ).padStart(2, "0");
+
+    horas.textContent = String(
+        Math.floor((totalSegundos % 86400) / 3600)
+    ).padStart(2, "0");
+
+    minutos.textContent = String(
+        Math.floor((totalSegundos % 3600) / 60)
+    ).padStart(2, "0");
+
+    segundos.textContent = String(
+        totalSegundos % 60
+    ).padStart(2, "0");
+}
+
+atualizarContagem();
+setInterval(atualizarContagem, 1000);
 
 
 /* =========================================
-   CONTROLE DA PRESENÇA
+   FORMULÁRIO DE PRESENÇA
 ========================================= */
 
-const presenceInputs =
-    document.querySelectorAll(
-        'input[name="presenca"]'
+const formulario = document.getElementById("rsvpForm");
+const grupoAcompanhante = document.getElementById("companionGroup");
+const grupoNomeAcompanhante = document.getElementById("companionNameGroup");
+const mensagemSucesso = document.getElementById("successMessage");
+
+function atualizarCamposAcompanhante() {
+    if (!formulario) return;
+
+    const presencaSelecionada = formulario.querySelector(
+        'input[name="presenca"]:checked'
     );
 
-
-presenceInputs.forEach(input => {
-
-    input.addEventListener("change", () => {
-
-        if (input.value === "sim" && input.checked) {
-
-            companionGroup.style.display = "block";
-
-        }
-
-        else if (input.value === "nao" && input.checked) {
-
-            companionGroup.style.display = "none";
-
-            companionNameGroup.style.display = "none";
-
-        }
-
-    });
-
-});
-
-
-/* =========================================
-   CONTROLE DO ACOMPANHANTE
-========================================= */
-
-const companionInputs =
-    document.querySelectorAll(
-        'input[name="acompanhante"]'
+    const acompanhanteSelecionado = formulario.querySelector(
+        'input[name="acompanhante"]:checked'
     );
 
+    const confirmouPresenca = presencaSelecionada?.value === "sim";
 
-companionInputs.forEach(input => {
+    if (grupoAcompanhante) {
+        grupoAcompanhante.style.display =
+            confirmouPresenca ? "block" : "none";
+    }
 
-    input.addEventListener("change", () => {
+    const informouAcompanhante =
+        confirmouPresenca && acompanhanteSelecionado?.value === "sim";
 
-        if (
-            input.value === "sim" &&
-            input.checked
-        ) {
+    if (grupoNomeAcompanhante) {
+        grupoNomeAcompanhante.style.display =
+            informouAcompanhante ? "block" : "none";
+    }
 
-            companionNameGroup.style.display =
-                "block";
+    const campoNomeAcompanhante = formulario.querySelector(
+        '[name="nomeAcompanhante"]'
+    );
 
+    if (campoNomeAcompanhante) {
+        campoNomeAcompanhante.required = Boolean(informouAcompanhante);
+
+        if (!informouAcompanhante) {
+            campoNomeAcompanhante.value = "";
         }
+    }
+}
 
-        else {
-
-            companionNameGroup.style.display =
-                "none";
-
-        }
-
-    });
-
-});
-
-
-/* =========================================
-   ENVIO DO FORMULÁRIO
-========================================= */
-
-rsvpForm.addEventListener(
-    "submit",
-    function (event) {
-
-        event.preventDefault();
-
-
-        /*
-            POR ENQUANTO:
-
-            Apenas simulamos o envio.
-
-            Na próxima etapa vamos trocar
-            esta parte pela integração com
-            Firebase / Firestore.
-        */
-
-
-        const nome =
-            document.getElementById("nome").value;
-
-
-        if (!nome.trim()) {
-
-            alert(
-                "Digite seu nome para continuar."
-            );
-
-            return;
-
-        }
-
-
-        rsvpForm.style.display = "none";
-
-        successMessage.style.display =
-            "block";
-
-
-        successMessage.scrollIntoView({
-            behavior: "smooth",
-            block: "center"
+if (formulario) {
+    formulario
+        .querySelectorAll(
+            'input[name="presenca"], input[name="acompanhante"]'
+        )
+        .forEach((campo) => {
+            campo.addEventListener("change", atualizarCamposAcompanhante);
         });
 
-    }
-);
-
-
-/* =========================================
-   CONTAGEM REGRESSIVA
-========================================= */
-
-const birthdayDate =
-    new Date(
-        "2027-01-30T12:00:00-03:00"
-    ).getTime();
-
-
-function updateCountdown() {
-
-    const now =
-        new Date().getTime();
-
-
-    const distance =
-        birthdayDate - now;
-
-
-    if (distance <= 0) {
-
-        document.getElementById("days")
-            .innerText = "00";
-
-        document.getElementById("hours")
-            .innerText = "00";
-
-        document.getElementById("minutes")
-            .innerText = "00";
-
-        document.getElementById("seconds")
-            .innerText = "00";
-
-        return;
-
-    }
-
-
-    const days =
-        Math.floor(
-            distance /
-            (1000 * 60 * 60 * 24)
-        );
-
-
-    const hours =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60 * 24)) /
-            (1000 * 60 * 60)
-        );
-
-
-    const minutes =
-        Math.floor(
-            (distance %
-                (1000 * 60 * 60)) /
-            (1000 * 60)
-        );
-
-
-    const seconds =
-        Math.floor(
-            (distance %
-                (1000 * 60)) /
-            1000
-        );
-
-
-    document.getElementById("days")
-        .innerText =
-        String(days).padStart(2, "0");
-
-
-    document.getElementById("hours")
-        .innerText =
-        String(hours).padStart(2, "0");
-
-
-    document.getElementById("minutes")
-        .innerText =
-        String(minutes).padStart(2, "0");
-
-
-    document.getElementById("seconds")
-        .innerText =
-        String(seconds).padStart(2, "0");
-
+    atualizarCamposAcompanhante();
 }
 
 
-updateCountdown();
+/* =========================================
+   MENSAGENS DE ERRO
+========================================= */
+
+function mostrarErro(mensagem) {
+    let erro = document.getElementById("rsvpError");
+
+    if (!erro && formulario) {
+        erro = document.createElement("p");
+        erro.id = "rsvpError";
+        erro.setAttribute("role", "alert");
+
+        erro.style.color = "#ff8b9f";
+        erro.style.marginTop = "12px";
+        erro.style.fontWeight = "600";
+
+        formulario.appendChild(erro);
+    }
+
+    if (erro) {
+        erro.textContent = mensagem;
+        erro.style.display = "block";
+    }
+}
 
 
-setInterval(
-    updateCountdown,
-    1000
-);
+/* =========================================
+   GRAVAÇÃO NO FIREBASE FIRESTORE
+========================================= */
 
+if (formulario) {
+    formulario.addEventListener("submit", async (evento) => {
+        evento.preventDefault();
 
+        const botaoEnviar = formulario.querySelector(
+            'button[type="submit"]'
+        );
+
+        const erroAnterior = document.getElementById("rsvpError");
+
+        if (erroAnterior) {
+            erroAnterior.style.display = "none";
+        }
+
+        if (mensagemSucesso) {
+            mensagemSucesso.style.display = "none";
+        }
+
+        if (botaoEnviar) {
+            botaoEnviar.disabled = true;
+            botaoEnviar.textContent = "ENVIANDO...";
+        }
+
+        try {
+            const campoNome = formulario.querySelector('[name="nome"]');
+            const campoNomeAcompanhante = formulario.querySelector(
+                '[name="nomeAcompanhante"]'
+            );
+
+            if (!campoNome) {
+                throw new Error("Não encontrei o campo de nome no formulário.");
+            }
+
+            const nome = campoNome.value.trim();
+
+            const presenca = formulario.querySelector(
+                'input[name="presenca"]:checked'
+            )?.value;
+
+            const acompanhanteEscolhido = formulario.querySelector(
+                'input[name="acompanhante"]:checked'
+            )?.value;
+
+            const nomeAcompanhante =
+                campoNomeAcompanhante?.value.trim() || "";
+
+            if (!nome) {
+                throw new Error("Digite seu nome.");
+            }
+
+            if (nome.length > 100) {
+                throw new Error("O nome deve ter no máximo 100 caracteres.");
+            }
+
+            if (!["sim", "nao"].includes(presenca)) {
+                throw new Error("Selecione se você vai comparecer.");
+            }
+
+            let acompanhante = "nao";
+            let nomeFinalAcompanhante = "";
+
+            if (presenca === "sim") {
+                if (!["sim", "nao"].includes(acompanhanteEscolhido)) {
+                    throw new Error(
+                        "Informe se você levará acompanhante."
+                    );
+                }
+
+                acompanhante = acompanhanteEscolhido;
+
+                if (acompanhante === "sim") {
+                    if (!nomeAcompanhante) {
+                        throw new Error(
+                            "Digite o nome do acompanhante."
+                        );
+                    }
+
+                    if (nomeAcompanhante.length > 100) {
+                        throw new Error(
+                            "O nome do acompanhante deve ter no máximo 100 caracteres."
+                        );
+                    }
+
+                    nomeFinalAcompanhante = nomeAcompanhante;
+                }
+            }
+
+            // Importa o Firestore e a configuração do projeto.
+            const firestore = await import(
+                "https://www.gstatic.com/firebasejs/12.0.0/firebase-firestore.js"
+            );
+
+            const configuracaoFirebase = await import("./firebase.js");
+            const db = configuracaoFirebase.db;
+
+            if (!db) {
+                throw new Error(
+                    "O arquivo firebase.js não exportou o banco db."
+                );
+            }
+
+            // Os campos enviados correspondem às regras publicadas.
+            await firestore.addDoc(
+                firestore.collection(db, "confirmacoes"),
+                {
+                    nome: nome,
+                    presenca: presenca,
+                    acompanhante: acompanhante,
+                    nomeAcompanhante: nomeFinalAcompanhante,
+                    criadoEm: firestore.serverTimestamp()
+                }
+            );
+
+            if (mensagemSucesso) {
+                const titulo = mensagemSucesso.querySelector("h3");
+                const texto = mensagemSucesso.querySelector("p");
+
+                if (titulo) {
+                    titulo.textContent = "Resposta registrada! 💗";
+                }
+
+                if (texto) {
+                    texto.textContent = presenca === "sim"
+                        ? "Que alegria! Sua resposta foi salva. Mal podemos esperar por esse dia especial. ✨"
+                        : "Obrigada por avisar! Sua resposta foi registrada. 💜";
+                }
+
+                mensagemSucesso.style.display = "block";
+            }
+
+            formulario.reset();
+            atualizarCamposAcompanhante();
+            formulario.style.display = "none";
+
+        } catch (erro) {
+            console.error("Erro ao enviar confirmação:", erro);
+
+            if (
+                erro.code === "permission-denied" ||
+                erro.code === "firestore/permission-denied"
+            ) {
+                mostrarErro(
+                    "O Firebase recusou a gravação. Confira as regras do Firestore."
+                );
+            } else if (
+                erro.code === "unavailable" ||
+                erro.code === "failed-precondition"
+            ) {
+                mostrarErro(
+                    "Não foi possível acessar o banco. Confira a conexão e o Firebase."
+                );
+            } else {
+                mostrarErro(
+                    erro.message ||
+                    "Não foi possível enviar sua resposta. Tente novamente."
+                );
+            }
+
+        } finally {
+            if (botaoEnviar && formulario.style.display !== "none") {
+                botaoEnviar.disabled = false;
+                botaoEnviar.textContent = "CONFIRMAR PRESENÇA ✨";
+            }
+        }
+    });
+}
