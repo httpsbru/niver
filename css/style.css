@@ -1764,3 +1764,738 @@ body {
     }
 }
 
+
+/* =========================================
+   MANUAL DE SOBREVIVÊNCIA CAPRIQUARIANAS
+   MOBILE FIRST
+========================================= */
+
+.survival {
+    position: relative;
+    isolation: isolate;
+    overflow: hidden;
+    padding: 64px 0;
+    color: var(--branco);
+    background:
+        radial-gradient(
+            ellipse at 15% 10%,
+            rgba(192, 74, 226, 0.18),
+            transparent 42%
+        ),
+        linear-gradient(
+            180deg,
+            #1b1030 0%,
+            #160d2b 100%
+        );
+}
+
+.survival .container {
+    position: relative;
+    z-index: 1;
+    width: min(100% - 36px, 1100px);
+    margin-inline: auto;
+}
+
+/* TÍTULO E INTRODUÇÃO */
+
+.survival-eyebrow {
+    margin: 0 0 14px;
+    color: var(--rosa-lunar);
+    font-size: 0.68rem;
+    font-weight: 800;
+    letter-spacing: 1.8px;
+    line-height: 1.6;
+    text-align: center;
+}
+
+.survival-title {
+    margin: 0;
+    color: var(--branco);
+    font-size: clamp(2.25rem, 9vw, 4.5rem);
+    line-height: 1.05;
+    text-align: center;
+    overflow-wrap: break-word;
+}
+
+.survival-title span {
+    color: var(--rosa-lunar);
+}
+
+.survival-intro {
+    max-width: 540px;
+    margin: 16px auto 0;
+    color: var(--prata);
+    font-size: 0.95rem;
+    line-height: 1.7;
+    text-align: center;
+}
+
+/* GRADE DE CARDS */
+
+.survival-grid {
+    display: grid;
+    grid-template-columns: minmax(0, 1fr);
+    gap: 14px;
+    margin-top: 30px;
+}
+
+/* CARDS */
+
+.survival-card {
+    min-width: 0;
+    padding: 23px 20px;
+    border: 1px solid rgba(192, 74, 226, 0.35);
+    border-radius: 20px;
+    background: rgba(36, 16, 61, 0.86);
+    box-shadow: 0 8px 24px rgba(0, 0, 0, 0.14);
+    color: var(--branco);
+    overflow-wrap: break-word;
+}
+
+.survival-icon {
+    margin-bottom: 12px;
+    font-size: 2rem;
+    line-height: 1.2;
+}
+
+.survival-number {
+    display: block;
+    margin-bottom: 8px;
+    color: var(--rosa-lunar);
+    font-size: 0.65rem;
+    font-weight: 800;
+    letter-spacing: 1.5px;
+    line-height: 1.5;
+}
+
+.survival-card h3 {
+    margin: 0 0 14px;
+    color: var(--branco);
+    font-size: 1.35rem;
+    line-height: 1.25;
+}
+
+/* LISTAS */
+
+.survival-card ul {
+    display: grid;
+    gap: 10px;
+    margin: 0;
+    padding-left: 19px;
+    color: var(--prata);
+    font-size: 0.94rem;
+    line-height: 1.65;
+}
+
+.survival-card li {
+    padding-left: 2px;
+}
+
+.survival-card li::marker {
+    color: var(--magenta);
+}
+
+.survival-note {
+    margin: 17px 0 0;
+    padding-top: 14px;
+    border-top: 1px solid rgba(217, 212, 242, 0.18);
+    color: var(--rosa-lunar);
+    font-size: 0.88rem;
+    line-height: 1.6;
+}
+
+/* PAGAMENTO */
+
+.survival-price {
+    margin-top: 5px;
+    color: var(--rosa-lunar);
+    font-size: clamp(2.5rem, 11vw, 3.5rem);
+    font-weight: 800;
+    line-height: 1.1;
+    font-variant-numeric: tabular-nums;
+}
+
+.survival-price span {
+    font-size: 0.55em;
+}
+
+.survival-muted {
+    margin: 6px 0 18px;
+    color: var(--prata);
+    font-size: 0.9rem;
+}
+
+.survival-deadline {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 5px;
+    margin-top: 10px;
+    padding: 13px 14px;
+    border: 1px solid rgba(192, 74, 226, 0.18);
+    border-radius: 13px;
+    background: rgba(192, 74, 226, 0.1);
+}
+
+.survival-deadline span {
+    color: var(--prata);
+    font-size: 0.85rem;
+    line-height: 1.5;
+}
+
+.survival-deadline strong {
+    color: var(--branco);
+    font-size: 0.95rem;
+    line-height: 1.5;
+}
+
+/* FRASE FINAL */
+
+.survival-footer {
+    margin: 30px 0 0;
+    color: var(--rosa-lunar);
+    font-size: 0.65rem;
+    font-weight: 700;
+    letter-spacing: 1.2px;
+    line-height: 1.8;
+    text-align: center;
+}
+
+/* =========================================
+   CELULARES PEQUENOS
+========================================= */
+
+@media (max-width: 360px) {
+    .survival {
+        padding: 50px 0;
+    }
+
+    .survival .container {
+        width: calc(100% - 28px);
+    }
+
+    .survival-eyebrow {
+        font-size: 0.61rem;
+        letter-spacing: 1.2px;
+    }
+
+    .survival-title {
+        font-size: 2.15rem;
+    }
+
+    .survival-intro {
+        font-size: 0.9rem;
+    }
+
+    .survival-card {
+        padding: 20px 16px;
+        border-radius: 17px;
+    }
+
+    .survival-card h3 {
+        font-size: 1.25rem;
+    }
+
+    .survival-card ul {
+        font-size: 0.9rem;
+    }
+}
+
+/* =========================================
+   TABLETS
+========================================= */
+
+@media (min-width: 600px) {
+    .survival {
+        padding: 80px 0;
+    }
+
+    .survival .container {
+        width: min(100% - 48px, 1100px);
+    }
+
+    .survival-grid {
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 18px;
+        margin-top: 40px;
+    }
+
+    .survival-card {
+        padding: 25px 22px;
+    }
+
+    .survival-footer {
+        font-size: 0.72rem;
+    }
+}
+
+/* =========================================
+   COMPUTADORES
+========================================= */
+
+@media (min-width: 1000px) {
+    .survival {
+        padding: 105px 0;
+    }
+
+    .survival-grid {
+        gap: 22px;
+        margin-top: 48px;
+    }
+
+    .survival-card {
+        padding: 30px;
+        border-radius: 24px;
+        transition:
+            transform 0.25s ease,
+            border-color 0.25s ease;
+    }
+
+    .survival-card:hover {
+        transform: translateY(-4px);
+        border-color: var(--rosa-lunar);
+    }
+
+    .survival-card h3 {
+        font-size: 1.5rem;
+    }
+
+    .survival-card ul {
+        font-size: 0.96rem;
+    }
+
+    .survival-note {
+        font-size: 0.9rem;
+    }
+
+    .survival-footer {
+        margin-top: 42px;
+    }
+}
+
+/* ACESSIBILIDADE: REDUZIR ANIMAÇÕES */
+
+@media (prefers-reduced-motion: reduce) {
+    .survival-card {
+        transition: none;
+    }
+
+    .survival-card:hover {
+        transform: none;
+    }
+}
+
+
+/* =========================================
+   CORREIO CÓSMICO
+========================================= */
+
+.correio-cosmico {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 20px;
+    text-align: center;
+    color: #fff6ff;
+    background:
+        radial-gradient(ellipse at 15% 20%, #7142a0 0, transparent 35%),
+        radial-gradient(ellipse at 85% 80%, #492568 0, transparent 40%),
+        linear-gradient(135deg, #160d27, #28133d 55%, #120d20);
+}
+
+.correio-container {
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.correio-cosmico h2,
+.correio-modal-conteudo h2 {
+    margin: 12px 0;
+    color: #f7dcff;
+}
+
+.correio-intro {
+    max-width: 560px;
+    margin: 0 auto 28px;
+    line-height: 1.7;
+    color: #eadcf5;
+}
+
+.correio-acoes {
+    display: flex;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 14px;
+}
+
+.correio-botao {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    min-height: 48px;
+    padding: 13px 22px;
+    border: 1px solid #d9a7ff;
+    border-radius: 999px;
+    background: linear-gradient(135deg, #8a4bb5, #63358d);
+    color: #fff;
+    font: inherit;
+    font-weight: 700;
+    cursor: pointer;
+    transition: transform .2s ease, filter .2s ease;
+}
+
+.correio-botao:hover {
+    transform: translateY(-2px);
+    filter: brightness(1.12);
+}
+
+.correio-botao:disabled {
+    opacity: .6;
+    cursor: wait;
+    transform: none;
+}
+
+.correio-botao-secundario {
+    background: transparent;
+    border-color: #b99bd3;
+}
+
+.correio-modal {
+    display: none;
+    position: fixed;
+    inset: 0;
+    z-index: 9999;
+    align-items: center;
+    justify-content: center;
+    padding: 18px;
+    background: rgb(9 5 17 / 82%);
+    backdrop-filter: blur(7px);
+}
+
+.correio-modal.aberto {
+    display: flex;
+}
+
+.correio-modal-conteudo {
+    position: relative;
+    width: min(100%, 560px);
+    max-height: 90vh;
+    overflow-y: auto;
+    padding: 30px;
+    border: 1px solid rgb(216 174 255 / 45%);
+    border-radius: 22px;
+    background:
+        radial-gradient(ellipse at top right, #49265e, transparent 55%),
+        #1b1229;
+    color: #fff6ff;
+    box-shadow: 0 20px 70px rgb(0 0 0 / 45%);
+}
+
+.correio-modal-leitura {
+    width: min(100%, 760px);
+}
+
+.correio-fechar {
+    position: sticky;
+    float: right;
+    top: 0;
+    width: 38px;
+    height: 38px;
+    margin: -12px -12px 0 8px;
+    border: 1px solid #795a91;
+    border-radius: 50%;
+    background: #30203e;
+    color: #fff;
+    font-size: 26px;
+    cursor: pointer;
+}
+
+.correio-modal-conteudo form {
+    display: flex;
+    flex-direction: column;
+    gap: 10px;
+}
+
+.correio-modal-conteudo label {
+    margin-top: 10px;
+    color: #eadcf5;
+    text-align: left;
+    font-weight: 600;
+}
+
+.correio-modal-conteudo input,
+.correio-modal-conteudo select,
+.correio-modal-conteudo textarea {
+    width: 100%;
+    min-width: 0;
+    padding: 12px 14px;
+    border: 1px solid #76568d;
+    border-radius: 12px;
+    outline: none;
+    background: #120d1d;
+    color: #fff;
+    font: inherit;
+}
+
+.correio-modal-conteudo input:focus,
+.correio-modal-conteudo select:focus,
+.correio-modal-conteudo textarea:focus {
+    border-color: #d9a7ff;
+    box-shadow: 0 0 0 3px rgb(217 167 255 / 18%);
+}
+
+.correio-modal-conteudo textarea {
+    resize: vertical;
+}
+
+.correio-caracteres {
+    margin: 0;
+    color: #cbb6da;
+    font-size: .85rem;
+    text-align: right;
+}
+
+.correio-status {
+    color: #eadcf5;
+    line-height: 1.5;
+}
+
+.lista-recados {
+    display: grid;
+    gap: 14px;
+    margin: 20px 0;
+}
+
+.recado-carta {
+    padding: 18px;
+    border: 1px solid rgb(211 172 245 / 35%);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #30203f, #21172e);
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.recado-carta h3 {
+    margin: 0 0 8px;
+    color: #f1cfff;
+    font-size: 1rem;
+}
+
+.recado-carta p {
+    margin: 0;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+.recado-destinataria,
+.recado-data {
+    display: block;
+    margin-top: 12px;
+    color: #cbb6da;
+    font-size: .85rem;
+}
+
+@media (max-width: 600px) {
+    .correio-cosmico {
+        padding: 55px 16px;
+    }
+
+    .correio-acoes {
+        flex-direction: column;
+        align-items: stretch;
+    }
+
+    .correio-botao {
+        width: 100%;
+    }
+
+    .correio-modal {
+        padding: 10px;
+    }
+
+    .correio-modal-conteudo {
+        max-height: 94dvh;
+        padding: 22px 18px;
+        border-radius: 18px;
+    }
+}
+
+
+/* =========================================
+   CORREÇÕES DE COMPATIBILIDADE COM O HTML
+========================================= */
+
+/* Corrige o tamanho do título da seção História */
+.historia-texto h2 {
+    font-size: clamp(1.5rem, 2vw, 2rem);
+}
+
+/* Garante que o texto dos campos seja legível */
+input[type="text"],
+textarea,
+select {
+    color: #38242d;
+}
+
+/* Campos da confirmação de presença */
+.rsvp input[type="text"],
+.rsvp textarea {
+    color: #fffaff;
+    background: rgba(16, 9, 31, 0.8);
+    border-color: rgba(192, 74, 226, 0.55);
+}
+
+.rsvp input[type="text"]::placeholder,
+.rsvp textarea::placeholder {
+    color: rgba(242, 165, 244, 0.7);
+}
+
+/* Botão de confirmação */
+.submit-button {
+    color: #fffaff;
+}
+
+/* Opções de presença */
+.radio-option {
+    color: #fffaff;
+    background: rgba(36, 16, 61, 0.86);
+}
+
+/* =========================================
+   CORREIO CÓSMICO — MODAIS
+========================================= */
+
+/* O atributo hidden deve prevalecer até o JS abrir o modal */
+.correio-modal[hidden] {
+    display: none !important;
+}
+
+/* Modal aberto */
+.correio-modal.aberto:not([hidden]) {
+    display: flex;
+}
+
+/* Campos do formulário de recados */
+.correio-modal-conteudo input,
+.correio-modal-conteudo select,
+.correio-modal-conteudo textarea {
+    color: #fffaff;
+    background: #120d1d;
+}
+
+/* Textos de orientação e mensagens de status */
+.correio-status {
+    margin: 12px 0;
+    overflow-wrap: anywhere;
+}
+
+.correio-status:empty {
+    display: none;
+}
+
+/* Botões dentro dos modais */
+.correio-modal-conteudo .correio-botao {
+    width: 100%;
+    margin-top: 10px;
+}
+
+/* Cartões dos recados.
+   Mantém compatibilidade com os dois nomes de classe. */
+.recado-carta,
+.cartao-recado {
+    min-width: 0;
+    padding: 18px;
+    border: 1px solid rgba(211, 172, 245, 0.35);
+    border-radius: 16px;
+    background: linear-gradient(145deg, #30203f, #21172e);
+    color: #fff6ff;
+    text-align: left;
+    overflow-wrap: anywhere;
+}
+
+.recado-carta h3,
+.cartao-recado h3 {
+    margin: 0 0 8px;
+    color: #f1cfff;
+    font-size: 1rem;
+}
+
+.recado-carta p,
+.cartao-recado p {
+    margin: 0;
+    color: #eadcf5;
+    line-height: 1.7;
+    white-space: pre-wrap;
+}
+
+/* Contador de caracteres */
+.correio-caracteres {
+    color: #cbb6da;
+    font-size: 0.85rem;
+    text-align: right;
+}
+
+/* Acessibilidade: foco visível */
+.correio-botao:focus-visible,
+.correio-fechar:focus-visible,
+.submit-button:focus-visible,
+.location-button:focus-visible {
+    outline: 3px solid #f2a5f4;
+    outline-offset: 4px;
+}
+
+/* Evita que os modais fiquem apertados no celular */
+@media (max-width: 600px) {
+    .correio-modal-conteudo {
+        width: 100%;
+        max-width: 560px;
+    }
+
+    .correio-modal-leitura {
+        max-width: 760px;
+    }
+
+    .historia-texto h2 {
+        font-size: clamp(1.5rem, 7vw, 2.2rem);
+    }
+}
+
+
+/* CORREÇÃO DOS MODAIS DO CORREIO CÓSMICO */
+
+.correio-modal[hidden] {
+    display: none !important;
+}
+
+.correio-modal.aberto:not([hidden]) {
+    display: flex !important;
+    position: fixed;
+    inset: 0;
+    z-index: 99999;
+    align-items: center;
+    justify-content: center;
+    padding: 20px;
+    overflow-y: auto;
+    background: rgba(15, 8, 25, 0.85);
+}
+
+.correio-modal.aberto:not([hidden]) .correio-modal-conteudo {
+    position: relative;
+    z-index: 1;
+    width: min(100%, 560px);
+    max-height: 90vh;
+    overflow-y: auto;
+}
+
+.correio-modal.aberto:not([hidden]) .correio-modal-leitura {
+    width: min(100%, 760px);
+}
+
+@media (max-width: 600px) {
+    .correio-modal.aberto:not([hidden]) {
+        padding: 10px;
+    }
+
+    .correio-modal.aberto:not([hidden]) .correio-modal-conteudo {
+        max-height: 94dvh;
+    }
+}
