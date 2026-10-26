@@ -2499,3 +2499,122 @@ select {
         max-height: 94dvh;
     }
 }
+
+
+/* =========================================
+   TRILHA SONORA — SPOTIFY
+========================================= */
+
+.spotify-section {
+    position: relative;
+    overflow: hidden;
+    padding: 80px 20px;
+    text-align: center;
+    background:
+        radial-gradient(
+            ellipse at top,
+            rgba(154, 83, 196, 0.24),
+            transparent 65%
+        ),
+        linear-gradient(180deg, #21132f 0%, #130d20 100%);
+    color: #fff6ff;
+}
+
+.spotify-container {
+    width: 100%;
+    max-width: 760px;
+    margin: 0 auto;
+}
+
+.spotify-section h2 {
+    margin: 12px 0 18px;
+    color: #f5d8ff;
+    font-family: "Great Vibes", cursive;
+    font-size: clamp(2.5rem, 6vw, 4rem);
+    font-weight: 400;
+}
+
+.spotify-intro {
+    max-width: 580px;
+    margin: 0 auto 30px;
+    color: #e5d8ed;
+    font-size: 1rem;
+    line-height: 1.8;
+}
+
+.spotify-player {
+    width: 100%;
+    margin: 0 auto 24px;
+    overflow: hidden;
+    border: 1px solid rgba(224, 174, 255, 0.3);
+    border-radius: 18px;
+    background: #121212;
+    box-shadow: 0 14px 40px rgba(0, 0, 0, 0.3);
+}
+
+.spotify-player iframe {
+    display: block;
+    width: 100%;
+    min-height: 352px;
+    border: 0;
+}
+
+.spotify-button {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    gap: 10px;
+    min-height: 50px;
+    padding: 14px 24px;
+    border-radius: 50px;
+    background: #1ed760;
+    color: #102216;
+    font-family: "Montserrat", sans-serif;
+    font-size: 0.9rem;
+    font-weight: 800;
+    text-decoration: none;
+    transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.spotify-button span {
+    font-size: 1.5rem;
+    line-height: 1;
+}
+
+.spotify-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 8px 24px rgba(30, 215, 96, 0.25);
+}
+
+.spotify-note {
+    margin-top: 18px;
+    color: #d8b7e9;
+    font-size: 0.85rem;
+    letter-spacing: 0.04em;
+}
+
+@media (max-width: 600px) {
+    .spotify-section {
+        padding: 58px 16px;
+    }
+
+    .spotify-intro {
+        font-size: 0.93rem;
+    }
+
+    .spotify-player {
+        border-radius: 14px;
+    }
+
+    .spotify-player iframe {
+        min-height: 352px;
+    }
+
+    .spotify-button {
+        width: 100%;
+        max-width: 340px;
+        padding: 14px 16px;
+        font-size: 0.82rem;
+    }
+}
+
